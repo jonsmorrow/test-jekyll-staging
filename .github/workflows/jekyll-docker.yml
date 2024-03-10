@@ -14,16 +14,22 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Download artifact
-        id: download-artifact
-        uses: dawidd6/action-download-artifact@v3
+      # - name: Download artifact
+      #   id: download-artifact
+      #   uses: dawidd6/action-download-artifact@v3
+      #   with:
+      #     github_token: ${{secrets.TEST_JEKYLL_ACTION_TOKEN}}
+      #     name: github-pages
+      #     workflow: main.yml
+      #     repo: jonsmorrow/test-jekyll
+      # - name: LS
+      #   run: ls -al .
+      - uses: actions/download-artifact@v4
         with:
           github_token: ${{secrets.TEST_JEKYLL_ACTION_TOKEN}}
           name: github-pages
-          workflow: main.yml
-          repo: jonsmorrow/test-jekyll
-      - name: LS
-        run: ls -al .
+      - name: Display structure of downloaded files
+        run: ls -R .
       - name: ECHO
         run: echo $ACTIONS_RESULTS_URL
       # - name: Setup Pages
