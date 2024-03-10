@@ -26,7 +26,8 @@ jobs:
       #   run: ls -al .
       - uses: actions/download-artifact@v4
         with:
-          github_token: ${{secrets.TEST_JEKYLL_ACTION_TOKEN}}
+          github-token: ${{secrets.TEST_JEKYLL_ACTION_TOKEN}}
+          repository: jonsmorrow/test-jekyll
           name: github-pages
       - name: Display structure of downloaded files
         run: ls -R .
