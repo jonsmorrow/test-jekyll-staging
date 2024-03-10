@@ -19,7 +19,8 @@ jobs:
         uses: dawidd6/action-download-artifact@v3
         with:
           github_token: ${{secrets.TEST_JEKYLL_ACTION_TOKEN}}
-          # name: github-pages
+          name: github-pages
+          workflow: main.yml
           repo: jonsmorrow/test-jekyll
           skip_unpack: true
           
