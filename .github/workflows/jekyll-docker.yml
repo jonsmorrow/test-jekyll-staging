@@ -7,7 +7,7 @@ on:
 
 permissions:
 #   actions: read
-  # pages: write
+  pages: write
   id-token: write
 
 jobs:
