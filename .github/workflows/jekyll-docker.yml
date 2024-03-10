@@ -27,7 +27,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: github-pages # NOTE: same artifact name
-          path: github-pages.zip
+          path: github-pages.tar
           overwrite: true
   deploy:
     runs-on: ubuntu-latest
