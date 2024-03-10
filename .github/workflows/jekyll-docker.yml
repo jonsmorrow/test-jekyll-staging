@@ -19,7 +19,7 @@ jobs:
         uses: dawidd6/action-download-artifact@v3
         with:
           github_token: ${{secrets.TEST_JEKYLL_ACTION_TOKEN}}
-          name: github-pages
+          # name: github-pages
           repo: jonsmorrow/test-jekyll
           
     
