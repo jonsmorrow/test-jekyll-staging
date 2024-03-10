@@ -1,10 +1,8 @@
-name: Jekyll site CI
+name: Jekyll Site Deploy
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  repository_dispatch:
+    types: [trigger-deploy]
   workflow_dispatch:
 
 permissions:
@@ -14,13 +12,13 @@ permissions:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Build
-      uses: actions/jekyll-build-pages@v1
-    - name: Upload artifact
-      # Automatically uploads an artifact from the './_site' directory by default
-      uses: actions/upload-pages-artifact@v3
+      - name: Download artifact
+        id: download-artifact
+        uses: dawidd6/action-download-artifact@v3
+        with:
+          name: github-pages
+          repo: jonsmorrow/test-jekyll
+          
+    
