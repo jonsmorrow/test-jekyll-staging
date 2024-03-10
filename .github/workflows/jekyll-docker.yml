@@ -22,7 +22,7 @@ jobs:
           name: github-pages
           workflow: main.yml
           repo: jonsmorrow/test-jekyll
-          path: ./_site
+          path: _site/
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
