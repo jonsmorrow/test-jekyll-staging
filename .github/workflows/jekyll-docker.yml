@@ -24,6 +24,8 @@ jobs:
           repo: jonsmorrow/test-jekyll
       - name: LS
         run: ls -al .
+      - name: ECHO
+        run: echo $ACTIONS_RESULTS_URL
       # - name: Setup Pages
       #   uses: actions/configure-pages@v3
       # - name: Upload artifact
