@@ -5,7 +5,7 @@ on:
     types: [trigger-deploy]
   workflow_dispatch:
 
-# permissions:
+permissions:
 #   actions: read
   # pages: write
   id-token: write
