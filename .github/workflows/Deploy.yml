@@ -47,7 +47,7 @@ jobs:
       - run: mkdir ./_site
       - run: tar -xf "$RUNNER_TEMP/artifact.tar" -C ./_site
       - name: Encrypt
-        run: staticrypt ./_site/* -r -d ./_site --salt 354324532123 -p test
+        run: staticrypt ./_site/* -r -d ./_site --salt 90CBAE1974BB0281DE81B74941D04A6F -p test
       - name: Archive artifact
         shell: sh
         if: runner.os == 'Linux'
