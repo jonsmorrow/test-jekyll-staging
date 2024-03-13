@@ -24,7 +24,7 @@ jobs:
           github-token: ${{secrets.TEST_JEKYLL_ACTION_TOKEN}}
           repository: jonsmorrow/test-jekyll
           run-id: 8259669818
-          path: ${{ runner.temp }}/artifact.tar
+          path: ${{ runner.temp }}
       
       - name: Upload artifact
         id: upload-artifact
@@ -47,7 +47,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: github-pages
-          path: ${{ runner.temp }}/artifact.tar
+          path: ${{ runner.temp }}
       - run: tar -xf "$RUNNER_TEMP/artifact.tar" -C ./_site/b48cf0140bea12734db05ebcdb012f1d265bed84
       - name: Archive artifact
         shell: sh
