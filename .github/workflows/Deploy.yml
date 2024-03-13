@@ -24,13 +24,14 @@ jobs:
           github-token: ${{secrets.TEST_JEKYLL_ACTION_TOKEN}}
           repository: jonsmorrow/test-jekyll
           run-id: 8259669818
+          path: ${{ runner.temp }}/artifact.tar
       
       - name: Upload artifact
         id: upload-artifact
         uses: actions/upload-artifact@v4
         with:
           name: github-pages
-          path: ./artifact.tar
+          path: ${{ runner.temp }}/artifact.tar
           if-no-files-found: error
   
   protect:
@@ -46,8 +47,9 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: github-pages
-      - run: tar -xf ./artifact.tar -C ./_site/b48cf0140bea12734db05ebcdb012f1d265bed84
-      - run: rm -rf ./artifact.tar
+          path: ${{ runner.temp }}/artifact.tar
+      - run: tar -xf $RUNNER_TEMP/artifact.tar -C ./_site/b48cf0140bea12734db05ebcdb012f1d265bed84
+      - run: rm -rf $RUNNER_TEMP/artifact.tar
       - name: Archive artifact
         shell: sh
         if: runner.os == 'Linux'
@@ -66,7 +68,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: github-pages
-          path: "$RUNNER_TEMP/artifact.tar"
+          path: ${{ runner.temp }}/artifact.tar
           overwrite: true
           if-no-files-found: error
   
