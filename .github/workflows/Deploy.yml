@@ -38,16 +38,16 @@ jobs:
     runs-on: ubuntu-latest
     needs: copy
     steps:
-      - name: Install staticrypt
-        run: npm install -g staticrypt@3.*
       - uses: actions/download-artifact@v4
         with:
           name: github-pages
           path: ${{ runner.temp }}
       - run: mkdir ./_site
       - run: tar -xf "$RUNNER_TEMP/artifact.tar" -C ./_site
-      - name: Encrypt
-        run: staticrypt ./_site/* -r -d ./_site --salt 90CBAE1974BB0281DE81B74941D04A6F -p zt0GTmGXBiEExIWXL5IKe --short
+      - uses: twomorrowstech/encrypt-static-site-action@v1
+        with:
+          SALT: 90CBAE1974BB0281DE81B74941D04A6F
+          PASSWORD: zt0GTmGXBiEExIWXL5IKe
       - name: Archive artifact
         shell: sh
         if: runner.os == 'Linux'
