@@ -38,17 +38,15 @@ jobs:
     runs-on: ubuntu-latest
     needs: copy
     steps:
-      - uses: actions/checkout@v3
-        with:
-          repository: matteobrusa/Password-protection-for-static-pages
-          path: _site/
-      - run: rm -rf ./_site/e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4
-      - run: mkdir _site/b48cf0140bea12734db05ebcdb012f1d265bed84
+      - name: Install staticrypt
+        run: npm install -g staticrypt@3.*
       - uses: actions/download-artifact@v4
         with:
           name: github-pages
           path: ${{ runner.temp }}
-      - run: tar -xf "$RUNNER_TEMP/artifact.tar" -C ./_site/b48cf0140bea12734db05ebcdb012f1d265bed84
+      - run: tar -xf "$RUNNER_TEMP/artifact.tar" -C ./_site
+      - name: Encrypt
+        run: staticrypt ./_site/* -r -d ./_site --salt 354324532123 -p test
       - name: Archive artifact
         shell: sh
         if: runner.os == 'Linux'
