@@ -23,7 +23,7 @@ jobs:
           name: github-pages
           github-token: ${{secrets.TEST_JEKYLL_ACTION_TOKEN}}
           repository: jonsmorrow/test-jekyll
-          run-id: 8224028891
+          run-id: 1321083302
       
       - name: Upload artifact
         id: upload-artifact
@@ -48,7 +48,7 @@ jobs:
     
   deploy:
     runs-on: ubuntu-latest
-    needs: copy
+    needs: protect
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
