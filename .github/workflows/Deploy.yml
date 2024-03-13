@@ -46,8 +46,8 @@ jobs:
       - run: tar -xf "$RUNNER_TEMP/artifact.tar" -C ./_site
       - uses: twomorrowstech/encrypt-static-site-action@v1
         with:
-          SALT: 90CBAE1974BB0281DE81B74941D04A6F
-          PASSWORD: zt0GTmGXBiEExIWXL5IKe
+          salt: ${{ secrets.site_salt }}
+          password: ${{ secrets.site_password }}
       - name: Archive artifact
         shell: sh
         if: runner.os == 'Linux'
