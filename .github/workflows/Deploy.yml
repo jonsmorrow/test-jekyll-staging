@@ -42,6 +42,7 @@ jobs:
           repository: matteobrusa/Password-protection-for-static-pages
           path: _site/
       - run: rm -rf ./_site/e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4
+      - run: mkdir _site/b48cf0140bea12734db05ebcdb012f1d265bed84
       - uses: actions/download-artifact@v4
         with:
           name: github-pages
