@@ -35,6 +35,7 @@ jobs:
   
   protect:
     runs-on: ubuntu-latest
+    needs: copy
     steps:
       - uses: actions/checkout@v3
         with:
@@ -47,7 +48,7 @@ jobs:
     
   deploy:
     runs-on: ubuntu-latest
-    needs: build
+    needs: copy
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
