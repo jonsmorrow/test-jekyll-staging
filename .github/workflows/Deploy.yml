@@ -44,6 +44,7 @@ jobs:
         with:
           name: github-pages
           path: ${{ runner.temp }}
+      - run: mkdir ./_site
       - run: tar -xf "$RUNNER_TEMP/artifact.tar" -C ./_site
       - name: Encrypt
         run: staticrypt ./_site/* -r -d ./_site --salt 354324532123 -p test
