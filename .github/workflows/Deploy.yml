@@ -18,6 +18,3 @@ jobs:
           repo: test-jekyll
           run-id: 8273256724
           github-token: ${{ secrets.TEST_JEKYLL_ACTION_TOKEN }}
-    
-          
-    
